@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harmony | Online Music Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-music"></i>
+      <span>Harmony</span>
+    </div>
+    <div class="search-bar">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" placeholder="Search for songs, artists, or albums...">
+    </div>
+    <div class="navbar-buttons">
+      <div class="dropdown">
+        <button class="dropbtn" id="languageButton">
+          <i class="fas fa-globe"></i>
+          <span>Languages</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <div class="dropdown-header">
+            <h3>Music Languages</h3>
+            <p>Select your preferred languages</p>
+          </div>
+          <div class="language-grid">
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Hindi</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>English</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Punjabi</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Tamil</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Telugu</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Marathi</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Gujarati</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Bengali</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Kannada</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Bhojpuri</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Malayalam</span>
+            </label>
+            <label class="language-option">
+              <input type="checkbox">
+              <span>Urdu</span>
+            </label>
+          </div>
+          <button class="update-btn">Apply Preferences</button>
+        </div>
+      </div>
+      <button class="login-btn" onclick="openModal()">
+        <i class="fas fa-user"></i>
+        <span>Login</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-header">
+        <h2>Welcome Back</h2>
+        <p>Login to your Harmony account</p>
+      </div>
+      <form class="login-form">
+        <div class="form-group">
+          <label for="username">Email or Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your email or username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox">
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+        <button type="submit" class="login-submit">Log In</button>
+        <div class="signup-link">
+          Don't have an account? <a href="#">Sign up</a>
+        </div>
+      </form>
+      <div class="social-login">
+        <p>Or continue with</p>
+        <div class="social-buttons">
+          <button class="social-btn google">
+            <i class="fab fa-google"></i>
+          </button>
+          <button class="social-btn facebook">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button class="social-btn apple">
+            <i class="fab fa-apple"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-menu">
+        <button class="sidebar-btn active" onclick="loadContent('home')">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </button>
+        <button class="sidebar-btn" onclick="loadContent('discover')">
+          <i class="fas fa-compass"></i>
+          <span>Discover</span>
+        </button>
+        <button class="sidebar-btn" onclick="loadContent('library')">
+          <i class="fas fa-music"></i>
+          <span>My Library</span>
+        </button>
+        <button class="sidebar-btn" onclick="loadContent('liked')">
+          <i class="fas fa-heart"></i>
+          <span>Liked Songs</span>
+        </button>
+        <button class="sidebar-btn" onclick="loadContent('recent')">
+          <i class="fas fa-history"></i>
+          <span>Recently Played</span>
+        </button>
+        <button class="sidebar-btn" onclick="loadContent('made-for-you')">
+          <i class="fas fa-headphones"></i>
+          <span>Made For You</span>
+        </button>
+      </div>
+      <div class="playlists-section">
+        <div class="section-header">
+          <h3>Your Playlists</h3>
+          <button class="add-playlist" onclick="createNewPlaylist()">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="playlist-items">
+          <button class="playlist-item" onclick="loadPlaylist('workout')">
+            <i class="fas fa-list-music"></i>
+            <span>Workout Mix</span>
+          </button>
+          <button class="playlist-item" onclick="loadPlaylist('chill')">
+            <i class="fas fa-list-music"></i>
+            <span>Chill Vibes</span>
+          </button>
+          <button class="playlist-item" onclick="loadPlaylist('roadtrip')">
+            <i class="fas fa-list-music"></i>
+            <span>Road Trip</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area" id="content-area">
+      <!-- Featured Section -->
+      <section class="featured-section">
+        <div class="section-header">
+          <h2>Good Afternoon</h2>
+          <button class="see-all">See all</button>
+        </div>
+        <div class="featured-grid">
+          <div class="featured-card" style="background-image: linear-gradient(to right, #ff758c, #ff7eb3);">
+            <div class="card-content">
+              <h3>Today's Top Hits</h3>
+              <p>Current chart toppers worldwide</p>
+            </div>
+          </div>
+          <div class="featured-card" style="background-image: linear-gradient(to right, #7f7fd5, #86a8e7);">
+            <div class="card-content">
+              <h3>Chill Lounge</h3>
+              <p>Relaxing beats for your day</p>
+            </div>
+          </div>
+          <div class="featured-card" style="background-image: linear-gradient(to right, #a8e063, #56ab2f);">
+            <div class="card-content">
+              <h3>Workout Energy</h3>
+              <p>Pump up your exercise routine</p>
+            </div>
+          </div>
+          <div class="featured-card" style="background-image: linear-gradient(to right, #f46b45, #eea849);">
+            <div class="card-content">
+              <h3>Indie Mix</h3>
+              <p>Fresh independent artists</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trending Now Section -->
+      <section class="trending-section">
+        <div class="section-header">
+          <h2>Trending Now</h2>
+          <button class="see-all">See all</button>
+        </div>
+        <div class="trending-grid" id="trending-grid">
+          <!-- Cards will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Recently Played Section -->
+      <section class="recent-section">
+        <div class="section-header">
+          <h2>Recently Played</h2>
+          <button class="see-all">See all</button>
+        </div>
+        <div class="recent-grid" id="recent-grid">
+          <!-- Cards will be populated by JavaScript -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Music Player -->
+  <div class="music-player">
+    <div class="song-info">
+      <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" alt="Song Cover" class="song-cover">
+      <div class="song-details">
+        <h4 class="song-title">Blinding Lights</h4>
+        <p class="song-artist">The Weeknd</p>
+      </div>
+      <button class="like-btn">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+    <div class="player-controls">
+      <div class="control-buttons">
+        <button class="control-btn">
+          <i class="fas fa-random"></i>
+        </button>
+        <button class="control-btn">
+          <i class="fas fa-step-backward"></i>
+        </button>
+        <button class="play-btn">
+          <i class="fas fa-pause"></i>
+        </button>
+        <button class="control-btn">
+          <i class="fas fa-step-forward"></i>
+        </button>
+        <button class="control-btn">
+          <i class="fas fa-redo"></i>
+        </button>
+      </div>
+      <div class="progress-container">
+        <span class="time-current">1:28</span>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 45%;"></div>
+        </div>
+        <span class="time-total">3:45</span>
+      </div>
+    </div>
+    <div class="player-options">
+      <button class="option-btn">
+        <i class="fas fa-list-ol"></i>
+      </button>
+      <button class="option-btn">
+        <i class="fas fa-volume-up"></i>
+      </button>
+      <div class="volume-slider">
+        <input type="range" min="0" max="100" value="80">
+      </div>
+      <button class="option-btn">
+        <i class="fas fa-expand"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

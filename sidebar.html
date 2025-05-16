@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harmony | Sidebar Demo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Base Styles */
+    :root {
+      --primary-color: #1db954;
+      --primary-dark: #1aa34a;
+      --primary-light: #1ed760;
+      --dark-bg: #121212;
+      --dark-secondary: #181818;
+      --dark-tertiary: #282828;
+      --light-text: #ffffff;
+      --light-secondary: #b3b3b3;
+      --light-tertiary: #535353;
+      --dark-text: #121212;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Circular', Arial, sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      height: 100vh;
+      display: flex;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 240px;
+      height: 100vh;
+      background-color: var(--dark-secondary);
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--light-tertiary);
+    }
+
+    .sidebar-logo {
+      font-size: 24px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-logo i {
+      color: var(--primary-color);
+    }
+
+    .sidebar-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .sidebar-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px;
+      border-radius: 4px;
+      background-color: transparent;
+      border: none;
+      color: var(--light-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .sidebar-btn i {
+      font-size: 20px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .sidebar-btn:hover {
+      color: var(--light-text);
+      background-color: var(--light-tertiary);
+    }
+
+    .sidebar-btn.active {
+      background-color: var(--light-tertiary);
+      color: var(--light-text);
+    }
+
+    .sidebar-section {
+      margin-top: 16px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-header h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--light-secondary);
+    }
+
+    .add-btn {
+      background-color: transparent;
+      border: none;
+      color: var(--light-secondary);
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .add-btn:hover {
+      color: var(--light-text);
+      transform: scale(1.1);
+    }
+
+    .playlist-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .playlist-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: transparent;
+      border: none;
+      color: var(--light-secondary);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .playlist-item i {
+      font-size: 16px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .playlist-item:hover {
+      color: var(--light-text);
+      background-color: var(--light-tertiary);
+    }
+
+    /* Content Area */
+    .content {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background: linear-gradient(to bottom, #1f1f1f, #121212);
+    }
+
+    .page-title {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    .content-section {
+      margin-bottom: 32px;
+    }
+
+    .content-section h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .content-card {
+      background-color: var(--dark-tertiary);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .content-card h3 {
+      margin-bottom: 8px;
+    }
+
+    /* Enhanced Card Styles */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      background: linear-gradient(145deg, #282828, #1f1f1f);
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      background: linear-gradient(145deg, #383838, #2f2f2f);
+      transform: translateY(-5px);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .feature-card p {
+      font-size: 12px;
+      color: var(--light-secondary);
+      margin-bottom: 8px;
+    }
+
+    .play-button {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background-color: var(--primary-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card:hover .play-button {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+
+    .play-button i {
+      color: white;
+      font-size: 16px;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #1db954, #1aa34a);
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-title {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-button {
+      background-color: white;
+      color: var(--dark-text);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .recent-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .recent-item:hover {
+      background-color: var(--light-tertiary);
+    }
+
+    .recent-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+    }
+
+    .recent-item-info {
+      flex: 1;
+    }
+
+    .recent-item-title {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .recent-item-artist {
+      font-size: 12px;
+      color: var(--light-secondary);
+    }
+
+    .recent-item-time {
+      font-size: 12px;
+      color: var(--light-secondary);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 80px;
+        padding: 16px 8px;
+      }
+
+      .sidebar-logo span,
+      .sidebar-btn span,
+      .playlist-item span,
+      .section-header h3 {
+        display: none;
+      }
+
+      .sidebar-btn,
+      .playlist-item {
+        justify-content: center;
+      }
+
+      .add-btn {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-image {
+        width: 120px;
+        height: 120px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content {
+        padding: 20px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-card {
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .content-card:nth-child(1) { animation-delay: 0.1s; }
+    .content-card:nth-child(2) { animation-delay: 0.2s; }
+    .content-card:nth-child(3) { animation-delay: 0.3s; }
+
+    /* Progress bar */
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      background-color: var(--light-tertiary);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: var(--primary-color);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <i class="fas fa-music"></i>
+        <span>Harmony</span>
+      </div>
+    </div>
+
+    <div class="sidebar-menu">
+      <button class="sidebar-btn active" onclick="loadContent('home')">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </button>
+      <button class="sidebar-btn" onclick="loadContent('discover')">
+        <i class="fas fa-compass"></i>
+        <span>Discover</span>
+      </button>
+      <button class="sidebar-btn" onclick="loadContent('library')">
+        <i class="fas fa-music"></i>
+        <span>My Library</span>
+      </button>
+      <button class="sidebar-btn" onclick="loadContent('liked')">
+        <i class="fas fa-heart"></i>
+        <span>Liked Songs</span>
+      </button>
+      <button class="sidebar-btn" onclick="loadContent('recent')">
+        <i class="fas fa-history"></i>
+        <span>Recently Played</span>
+      </button>
+      <button class="sidebar-btn" onclick="loadContent('made-for-you')">
+        <i class="fas fa-headphones"></i>
+        <span>Made For You</span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>Your Playlists</h3>
+        <button class="add-btn" onclick="createPlaylist()">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <div class="playlist-items">
+        <button class="playlist-item" onclick="loadPlaylist('workout')">
+          <i class="fas fa-list-music"></i>
+          <span>Workout Mix</span>
+        </button>
+        <button class="playlist-item" onclick="loadPlaylist('chill')">
+          <i class="fas fa-list-music"></i>
+          <span>Chill Vibes</span>
+        </button>
+        <button class="playlist-item" onclick="loadPlaylist('roadtrip')">
+          <i class="fas fa-list-music"></i>
+          <span>Road Trip</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Content Area -->
+  <main class="content" id="content-area">
+    <h1 class="page-title" id="page-title">Home</h1>
+    
+    <div class="hero-section">
+      <div class="hero-text">
+        <h2 class="hero-title">Welcome to Harmony</h2>
+        <p class="hero-description">Your personal music companion. Discover new songs, create playlists, and enjoy your favorite tracks anytime.</p>
+        <button class="hero-button">Start Listening</button>
+      </div>
+      <img src="https://source.unsplash.com/random/300x300/?music" alt="Music" class="hero-image">
+    </div>
+    
+    <div class="content-section">
+      <h2>Recently Played</h2>
+      <div class="card-grid">
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?album1" alt="Album">
+          <h4>Summer Vibes</h4>
+          <p>Various Artists</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 65%"></div>
+          </div>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?album2" alt="Album">
+          <h4>Late Night Drive</h4>
+          <p>Chill Wave</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 30%"></div>
+          </div>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?album3" alt="Album">
+          <h4>Workout Energy</h4>
+          <p>Power Hits</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 80%"></div>
+          </div>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?album4" alt="Album">
+          <h4>Focus Flow</h4>
+          <p>Study Mix</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 45%"></div>
+          </div>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2>Recommended For You <span class="badge">New</span></h2>
+      <div class="card-grid">
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?artist1" alt="Artist">
+          <h4>Artist Spotlight</h4>
+          <p>Based on your listening</p>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?artist2" alt="Artist">
+          <h4>New Releases</h4>
+          <p>Fresh this week</p>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?artist3" alt="Artist">
+          <h4>Throwback Hits</h4>
+          <p>90s favorites</p>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="https://source.unsplash.com/random/200x200/?artist4" alt="Artist">
+          <h4>Discover Weekly</h4>
+          <p>Updated every Monday</p>
+          <div class="play-button">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Sample content data
+    const contentData = {
+      home: {
+        title: "Home",
+        sections: [
+          {
+            type: "hero",
+            title: "Welcome to Harmony",
+            description: "Your personal music companion. Discover new songs, create playlists, and enjoy your favorite tracks anytime.",
+            image: "https://source.unsplash.com/random/300x300/?music"
+          },
+          {
+            type: "grid",
+            title: "Recently Played",
+            items: [
+              { title: "Summer Vibes", subtitle: "Various Artists", image: "https://source.unsplash.com/random/200x200/?album1", progress: 65 },
+              { title: "Late Night Drive", subtitle: "Chill Wave", image: "https://source.unsplash.com/random/200x200/?album2", progress: 30 },
+              { title: "Workout Energy", subtitle: "Power Hits", image: "https://source.unsplash.com/random/200x200/?album3", progress: 80 },
+              { title: "Focus Flow", subtitle: "Study Mix", image: "https://source.unsplash.com/random/200x200/?album4", progress: 45 }
+            ]
+          },
+          {
+            type: "grid",
+            title: "Recommended For You",
+            badge: "New",
+            items: [
+              { title: "Artist Spotlight", subtitle: "Based on your listening", image: "https://source.unsplash.com/random/200x200/?artist1" },
+              { title: "New Releases", subtitle: "Fresh this week", image: "https://source.unsplash.com/random/200x200/?artist2" },
+              { title: "Throwback Hits", subtitle: "90s favorites", image: "https://source.unsplash.com/random/200x200/?artist3" },
+              { title: "Discover Weekly", subtitle: "Updated every Monday", image: "https://source.unsplash.com/random/200x200/?artist4" }
+            ]
+          }
+        ]
+      },
+      discover: {
+        title: "Discover",
+        sections: [
+          {
+            type: "hero",
+            title: "Explore New Music",
+            description: "Find your next favorite song with our curated collections and recommendations.",
+            image: "https://source.unsplash.com/random/300x300/?concert"
+          },
+          {
+            type: "grid",
+            title: "New Releases",
+            items: [
+              { title: "Album of the Week", subtitle: "The New Division", image: "https://source.unsplash.com/random/200x200/?album5" },
+              { title: "Hot Single", subtitle: "Dua Lipa", image: "https://source.unsplash.com/random/200x200/?album6" },
+              { title: "Indie Spotlight", subtitle: "Beach House", image: "https://source.unsplash.com/random/200x200/?album7" },
+              { title: "Rising Star", subtitle: "Clairo", image: "https://source.unsplash.com/random/200x200/?album8" }
+            ]
+          },
+          {
+            type: "grid",
+            title: "Popular Playlists",
+            items: [
+              { title: "Today's Top Hits", subtitle: "Global chart toppers", image: "https://source.unsplash.com/random/200x200/?playlist1" },
+              { title: "Chill Lounge", subtitle: "Relaxing beats", image: "https://source.unsplash.com/random/200x200/?playlist2" },
+              { title: "Workout Power", subtitle: "High energy tracks", image: "https://source.unsplash.com/random/200x200/?playlist3" },
+              { title: "Coffee House", subtitle: "Acoustic vibes", image: "https://source.unsplash.com/random/200x200/?playlist4" }
+            ]
+          },
+          {
+            type: "grid",
+            title: "Genres & Moods",
+            items: [
+              { title: "Pop", subtitle: "Current favorites", image: "https://source.unsplash.com/random/200x200/?pop" },
+              { title: "Rock", subtitle: "Classic and new", image: "https://source.unsplash.com/random/200x200/?rock" },
+              { title: "Hip Hop", subtitle: "Fresh tracks", image: "https://source.unsplash.com/random/200x200/?hiphop" },
+              { title: "Electronic", subtitle: "Dance and more", image: "https://source.unsplash.com/random/200x200/?electronic" }
+            ]
+          }
+        ]
+      },
+      library: {
+        title: "My Library",
+        sections: [
+          {
+            type: "hero",
+            title: "Your Music Collection",
+            description: "All your saved songs, albums and artists in one place.",
+            image: "https://source.unsplash.com/random/300x300/?vinyl"
+          },
+          {
+            type: "grid",
+            title: "Your Albums",
+            items: [
+              { title: "Future Nostalgia", subtitle: "Dua Lipa", image: "https://source.unsplash.com/random/200x200/?album9" },
+              { title: "Chromatica", subtitle: "Lady Gaga", image: "https://source.unsplash.com/random/200x200/?album10" },
+              { title: "Fine Line", subtitle: "Harry Styles", image: "https://source.unsplash.com/random/200x200/?album11" },
+              { title: "Folklore", subtitle: "Taylor Swift", image: "https://source.unsplash.com/random/200x200/?album12" }
+            ]
+          },
+          {
+            type: "grid",
+            title: "Your Artists",
+            items: [
+              { title: "The Weeknd", subtitle: "Artist", image: "https://source.unsplash.com/random/200x200/?theweeknd" },
+              { title: "Billie Eilish", subtitle: "Artist", image: "https://source.unsplash.com/random/200x200/?billieeilish" },
+              { title: "BTS", subtitle: "Artist", image: "https://source.unsplash.com/random/200x200/?bts" },
+              { title: "Ariana Grande", subtitle: "Artist", image: "https://source.unsplash.com/random/200x200/?arianagrande" }
+            ]
+          },
+          {
+            type: "list",
+            title: "Recently Added Songs",
+            items: [
+              { title: "Blinding Lights", subtitle: "The Weeknd", image: "https://source.unsplash.com/random/50x50/?song1", time: "3:20" },
+              { title: "Don't Start Now", subtitle: "Dua Lipa", image: "https://source.unsplash.com/random/50x50/?song2", time: "3:03" },
+              { title: "Watermelon Sugar", subtitle: "Harry Styles", image: "https://source.unsplash.com/random/50x50/?song3", time: "2:54" },
+              { title: "Cardigan", subtitle: "Taylor Swift", image: "https://source.unsplash.com/random/50x50/?song4", time: "3:59" }
+            ]
+          }
+        ]
+      },
+      liked: {
+        title: "Liked Songs",
+        sections: [
+          {
+            type: "hero",
+            title: "Your Liked Songs",
+            description: "All the songs you've loved in one playlist.",
+            image: "https://source.unsplash.com/random/300x300/?heart"
+          },
+          {
+            type: "grid",
+            title: "Most Played",
+            items: [
+              { title: "Save Your Tears", subtitle: "The Weeknd", image: "https://source.unsplash.com/random/200x200/?song5", progress: 90 },
+              { title: "Levitating", subtitle: "Dua Lipa", image: "https://source.unsplash.com/random/200x200/?song6", progress: 85 },
+              { title: "Stay", subtitle: "The Kid LAROI, Justin Bieber", image: "https://source.unsplash.com/random/200x200/?song7", progress: 75 },
+              { title: "Good 4 U", subtitle: "Olivia Rodrigo", image: "https://source.unsplash.com/random/200x200/?song8", progress: 70 }
+            ]
+          },
+          {
+            type: "list",
+            title: "Recently Added",
+            items: [
+              { title: "Montero", subtitle: "Lil Nas X", image: "https://source.unsplash.com/random/50x50/?song9", time: "2:17" },
+              { title: "Peaches", subtitle: "Justin Bieber", image: "https://source.unsplash.com/random/50x50/?song10", time: "3:18" },
+              { title: "Kiss Me More", subtitle: "Doja Cat ft. SZA", image: "https://source.unsplash.com/random/50x50/?song11", time: "3:28" },
+              { title: "Deja Vu", subtitle: "Olivia Rodrigo", image: "https://source.unsplash.com/random/50x50/?song12", time: "3:35" }
+            ]
+          }
+        ]
+      },
+      recent: {
+        title: "Recently Played",
+        sections: [
+          {
+            type: "hero",
+            title: "Your Listening History",
+            description: "Pick up where you left off with your recently played tracks.",
+            image: "https://source.unsplash.com/random/300x300/?headphones"
+          },
+          {
+            type: "list",
+            title: "Today",
+            items: [
+              { title: "Stay", subtitle: "The Kid LAROI, Justin Bieber", image: "https://source.unsplash.com/random/50x50/?song13", time: "2:21" },
+              { title: "Bad Habits", subtitle: "Ed Sheeran", image: "https://source.unsplash.com/random/50x50/?song14", time: "3:51" },
+              { title: "Industry Baby", subtitle: "Lil Nas X", image: "https://source.unsplash.com/random/50x50/?song15", time: "3:32" },
+              { title: "Shivers", subtitle: "Ed Sheeran", image: "https://source.unsplash.com/random/50x50/?song16", time: "3:27" }
+            ]
+          },
+          {
+            type: "list",
+            title: "Yesterday",
+            items: [
+              { title: "Easy On Me", subtitle: "Adele", image: "https://source.unsplash.com/random/50x50/?song17", time: "3:44" },
+              { title: "Cold Heart", subtitle: "Elton John, Dua Lipa", image: "https://source.unsplash.com/random/50x50/?song18", time: "3:22" },
+              { title: "Heat Waves", subtitle: "Glass Animals", image: "https://source.unsplash.com/random/50x50/?song19", time: "3:58" },
+              { title: "abcdefu", subtitle: "GAYLE", image: "https://source.unsplash.com/random/50x50/?song20", time: "2:48" }
+            ]
+          }
+        ]
+      },
+      'made-for-you': {
+        title: "Made For You",
+        sections: [
+          {
+            type: "hero",
+            title: "Your Personal Mixes",
+            description: "Music curated just for you, based on your listening habits.",
+            image: "https://source.unsplash.com/random/300x300/?personalized"
+          },
+          {
+            type: "grid",
+            title: "Daily Mixes",
+            items: [
+              { title: "Daily Mix 1", subtitle: "Pop favorites", image: "https://source.unsplash.com/random/200x200/?mix1" },
+              { title: "Daily Mix 2", subtitle: "Chill vibes", image: "https://source.unsplash.com/random/200x200/?mix2" },
+              { title: "Daily Mix 3", subtitle: "Workout energy", image: "https://source.unsplash.com/random/200x200/?mix3" },
+              { title: "Daily Mix 4", subtitle: "Focus flow", image: "https://source.unsplash.com/random/200x200/?mix4" }
+            ]
+          },
+          {
+            type: "grid",
+            title: "Discover Weekly",
+            items: [
+              { title: "Discover Weekly", subtitle: "Updated today", image: "https://source.unsplash.com/random/200x200/?weekly1" },
+              { title: "Release Radar", subtitle: "New from artists you follow", image: "https://source.unsplash.com/random/200x200/?weekly2" },
+              { title: "Time Capsule", subtitle: "Songs from your past", image: "https://source.unsplash.com/random/200x200/?weekly3" },
+              { title: "On Repeat", subtitle: "Songs you can't stop playing", image: "https://source.unsplash.com/random/200x200/?weekly4" }
+            ]
+          }
+        ]
+      }
+    };
+
+    const playlistData = {
+      workout: {
+        title: "Workout Mix",
+        sections: [
+          {
+            type: "hero",
+            title: "Workout Mix",
+            description: "High energy tracks to power through your workout.",
+            image: "https://source.unsplash.com/random/300x300/?gym"
+          },
+          {
+            type: "list",
+            title: "Tracklist",
+            items: [
+              { title: "Stronger", subtitle: "Kanye West", image: "https://source.unsplash.com/random/50x50/?workout1", time: "4:06" },
+              { title: "Till I Collapse", subtitle: "Eminem", image: "https://source.unsplash.com/random/50x50/?workout2", time: "4:57" },
+              { title: "Can't Hold Us", subtitle: "Macklemore & Ryan Lewis", image: "https://source.unsplash.com/random/50x50/?workout3", time: "4:18" },
+              { title: "Power", subtitle: "Kanye West", image: "https://source.unsplash.com/random/50x50/?workout4", time: "4:52" },
+              { title: "Lose Yourself", subtitle: "Eminem", image: "https://source.unsplash.com/random/50x50/?workout5", time: "5:20" }
+            ]
+          }
+        ]
+      },
+      chill: {
+        title: "Chill Vibes",
+        sections: [
+          {
+            type: "hero",
+            title: "Chill Vibes",
+            description: "Relaxing tunes to help you unwind and de-stress.",
+            image: "https://source.unsplash.com/random/300x300/?relax"
+          },
+          {
+            type: "list",
+            title: "Tracklist",
+            items: [
+              { title: "Redbone", subtitle: "Childish Gambino", image: "https://source.unsplash.com/random/50x50/?chill1", time: "5:27" },
+              { title: "Location", subtitle: "Khalid", image: "https://source.unsplash.com/random/50x50/?chill2", time: "3:39" },
+              { title: "The Less I Know The Better", subtitle: "Tame Impala", image: "https://source.unsplash.com/random/50x50/?chill3", time: "3:36" },
+              { title: "Sunflower", subtitle: "Post Malone, Swae Lee", image: "https://source.unsplash.com/random/50x50/?chill4", time: "2:38" },
+              { title: "Circles", subtitle: "Post Malone", image: "https://source.unsplash.com/random/50x50/?chill5", time: "3:35" }
+            ]
+          }
+        ]
+      },
+      roadtrip: {
+        title: "Road Trip",
+        sections: [
+          {
+            type: "hero",
+            title: "Road Trip",
+            description: "The perfect soundtrack for your journey.",
+            image: "https://source.unsplash.com/random/300x300/?road"
+          },
+          {
+            type: "list",
+            title: "Tracklist",
+            items: [
+              { title: "On The Road Again", subtitle: "Willie Nelson", image: "https://source.unsplash.com/random/50x50/?roadtrip1", time: "2:38" },
+              { title: "Life Is A Highway", subtitle: "Tom Cochrane", image: "https://source.unsplash.com/random/50x50/?roadtrip2", time: "4:26" },
+              { title: "Born To Be Wild", subtitle: "Steppenwolf", image: "https://source.unsplash.com/random/50x50/?roadtrip3", time: "3:30" },
+              { title: "Sweet Home Alabama", subtitle: "Lynyrd Skynyrd", image: "https://source.unsplash.com/random/50x50/?roadtrip4", time: "4:45" },
+              { title: "Hotel California", subtitle: "Eagles", image: "https://source.unsplash.com/random/50x50/?roadtrip5", time: "6:30" }
+            ]
+          }
+        ]
+      }
+    };
+
+    // DOM Elements
+    const contentArea = document.getElementById('content-area');
+    const pageTitle = document.getElementById('page-title');
+    const sidebarButtons = document.querySelectorAll('.sidebar-btn');
+    const playlistItems = document.querySelectorAll('.playlist-item');
+
+    // Load content function
+    function loadContent(section) {
+      // Update active button
+      sidebarButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick').includes(section)) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Load content
+      const data = contentData[section];
+      pageTitle.textContent = data.title;
+      
+      let contentHTML = `<h1 class="page-title">${data.title}</h1>`;
+      
+      data.sections.forEach((section, index) => {
+        if (section.type === "hero") {
+          contentHTML += `
+            <div class="hero-section">
+              <div class="hero-text">
+                <h2 class="hero-title">${section.title}</h2>
+                <p class="hero-description">${section.description}</p>
+                <button class="hero-button" onclick="playSection('${section.title}')">Play Now</button>
+              </div>
+              <img src="${section.image}" alt="${section.title}" class="hero-image">
+            </div>
+          `;
+        } else if (section.type === "grid") {
+          contentHTML += `
+            <div class="content-section">
+              <h2>${section.title}${section.badge ? ` <span class="badge">${section.badge}</span>` : ''}</h2>
+              <div class="card-grid">
+                ${section.items.map(item => `
+                  <div class="feature-card" onclick="playItem('${item.title}')">
+                    <img src="${item.image}" alt="${item.title}">
+                    <h4>${item.title}</h4>
+                    <p>${item.subtitle}</p>
+                    ${item.progress ? `<div class="progress-container"><div class="progress-bar" style="width: ${item.progress}%"></div></div>` : ''}
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        } else if (section.type === "list") {
+          contentHTML += `
+            <div class="content-section">
+              <h2>${section.title}</h2>
+              <div class="content-card">
+                ${section.items.map(item => `
+                  <div class="recent-item" onclick="playSong('${item.title}')">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="recent-item-info">
+                      <div class="recent-item-title">${item.title}</div>
+                      <div class="recent-item-artist">${item.subtitle}</div>
+                    </div>
+                    <div class="recent-item-time">${item.time}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      contentArea.innerHTML = contentHTML;
+    }
+
+    // Load playlist function
+    function loadPlaylist(playlistId) {
+      // Update active playlist
+      playlistItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('onclick').includes(playlistId)) {
+          item.classList.add('active');
+        }
+      });
+
+      // Load playlist content
+      const data = playlistData[playlistId];
+      pageTitle.textContent = data.title;
+      
+      let contentHTML = `<h1 class="page-title">${data.title}</h1>`;
+      
+      data.sections.forEach((section, index) => {
+        if (section.type === "hero") {
+          contentHTML += `
+            <div class="hero-section">
+              <div class="hero-text">
+                <h2 class="hero-title">${section.title}</h2>
+                <p class="hero-description">${section.description}</p>
+                <button class="hero-button" onclick="playPlaylist('${data.title}')">Play Playlist</button>
+              </div>
+              <img src="${section.image}" alt="${section.title}" class="hero-image">
+            </div>
+          `;
+        } else if (section.type === "list") {
+          contentHTML += `
+            <div class="content-section">
+              <h2>${section.title}</h2>
+              <div class="content-card">
+                ${section.items.map(item => `
+                  <div class="recent-item" onclick="playSong('${item.title}')">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="recent-item-info">
+                      <div class="recent-item-title">${item.title}</div>
+                      <div class="recent-item-artist">${item.subtitle}</div>
+                    </div>
+                    <div class="recent-item-time">${item.time}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      contentArea.innerHTML = contentHTML;
+    }
+
+    // Create new playlist
+    function createPlaylist() {
+      const playlistName = prompt('Enter playlist name:');
+      if (playlistName && playlistName.trim() !== '') {
+        const playlistItemsContainer = document.querySelector('.playlist-items');
+        const newPlaylist = document.createElement('button');
+        newPlaylist.className = 'playlist-item';
+        newPlaylist.innerHTML = `
+          <i class="fas fa-list-music"></i>
+          <span>${playlistName}</span>
+        `;
+        newPlaylist.onclick = function() {
+          loadCustomPlaylist(playlistName);
+        };
+        playlistItemsContainer.appendChild(newPlaylist);
+      }
+    }
+
+    // Load custom playlist
+    function loadCustomPlaylist(name) {
+      // Update active playlist
+      playlistItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      pageTitle.textContent = name;
+      
+      contentArea.innerHTML = `
+        <h1 class="page-title">${name}</h1>
+        <div class="hero-section">
+          <div class="hero-text">
+            <h2 class="hero-title">${name}</h2>
+            <p class="hero-description">Your personal playlist. Add songs to build your collection.</p>
+            <button class="hero-button" onclick="playPlaylist('${name}')">Play Playlist</button>
+          </div>
+          <img src="https://source.unsplash.com/random/300x300/?playlist" alt="${name}" class="hero-image">
+        </div>
+        <div class="content-section">
+          <h2>Add Songs</h2>
+          <div class="card-grid">
+            <div class="feature-card" onclick="addToPlaylist('Popular Hits', '${name}')">
+              <img src="https://source.unsplash.com/random/200x200/?hits" alt="Popular Hits">
+              <h4>Popular Hits</h4>
+              <p>Current chart toppers</p>
+              <div class="play-button">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <div class="feature-card" onclick="addToPlaylist('Recommended', '${name}')">
+              <img src="https://source.unsplash.com/random/200x200/?recommended" alt="Recommended">
+              <h4>Recommended</h4>
+              <p>Based on your taste</p>
+              <div class="play-button">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <div class="feature-card" onclick="addToPlaylist('New Releases', '${name}')">
+              <img src="https://source.unsplash.com/random/200x200/?new" alt="New Releases">
+              <h4>New Releases</h4>
+              <p>Fresh this week</p>
+              <div class="play-button">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+            <div class="feature-card" onclick="showSearch()">
+              <img src="https://source.unsplash.com/random/200x200/?search" alt="Search">
+              <h4>Search Songs</h4>
+              <p>Find specific tracks</p>
+              <div class="play-button">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Demo functions
+    function playSection(title) {
+      alert(`Now playing: ${title}`);
+    }
+
+    function playPlaylist(title) {
+      alert(`Now playing playlist: ${title}`);
+    }
+
+    function playItem(title) {
+      alert(`Now playing: ${title}`);
+    }
+
+    function playSong(title) {
+      alert(`Now playing song: ${title}`);
+    }
+
+    function addToPlaylist(collection, playlist) {
+      alert(`Added ${collection} to ${playlist}`);
+    }
+
+    function showSearch() {
+      alert("Search functionality would appear here");
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set home as active by default
+      document.querySelector('.sidebar-btn').classList.add('active');
+    });
+  </script>
+</body>
+</html>
