@@ -15,7 +15,7 @@ const musicData = {
       artist: "The Weeknd",
       cover: "https://i.scdn.co/image/ab67616d00001e02b1c4b76e23414c9f20242268",
       banner: "https://source.unsplash.com/random/800x300/?popmusic",
-      plays: "1.8M"
+      plays: "1.9M"
     },
     {
       id: 3,
