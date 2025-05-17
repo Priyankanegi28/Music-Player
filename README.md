@@ -26,11 +26,11 @@ Melo is a modern, responsive web-based music player with a sleek UI inspired by 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/melo-music-player.git
+   git clone https://github.com/yourusername/Music-player.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd melo-music-player
+   cd Music-player
    ```
 3. Open `index.html` in your browser (no server required)
 
