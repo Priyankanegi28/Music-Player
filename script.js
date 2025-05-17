@@ -1,4 +1,4 @@
-// Sample music data with banners
+// Sample music data with banners and audio URLs
 const musicData = {
   trending: [
     {
@@ -7,7 +7,8 @@ const musicData = {
       artist: "The Weeknd",
       cover: "https://i.ytimg.com/vi/XwxLwG2_Sxk/sddefault.jpg",
       banner: "https://i.ytimg.com/vi/XwxLwG2_Sxk/sddefault.jpg",
-      plays: "2.5M"
+      plays: "2.5M",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Replace with actual audio URL
     },
     {
       id: 2,
@@ -15,7 +16,8 @@ const musicData = {
       artist: "The Weeknd",
       cover: "https://i.scdn.co/image/ab67616d00001e02b1c4b76e23414c9f20242268",
       banner: "https://source.unsplash.com/random/800x300/?popmusic",
-      plays: "1.9M"
+      plays: "1.9M",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" // Replace with actual audio URL
     },
     {
       id: 3,
@@ -23,7 +25,8 @@ const musicData = {
       artist: "The Kid LAROI, Justin Bieber",
       cover: "https://i.ytimg.com/vi/uMt12Zh6mhM/maxresdefault.jpg",
       banner: "https://source.unsplash.com/random/800x300/?justinbieber",
-      plays: "3.2M"
+      plays: "3.2M",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" // Replace with actual audio URL
     },
     {
       id: 4,
@@ -31,7 +34,8 @@ const musicData = {
       artist: "Olivia Rodrigo",
       cover: "https://i.scdn.co/image/ab67616d00001e02e6f407c7f3a0ec98845e4431",
       banner: "https://source.unsplash.com/random/800x300/?oliviarodrigo",
-      plays: "2.1M"
+      plays: "2.1M",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
     },
     {
       id: 5,
@@ -39,7 +43,8 @@ const musicData = {
       artist: "Dua Lipa",
       cover: "https://i1.sndcdn.com/artworks-YL3ua1FAzIzzSk0e-OWj0qw-t1080x1080.jpg",
       banner: "https://source.unsplash.com/random/800x300/?dualipa",
-      plays: "1.9M"
+      plays: "1.9M",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
     },
     {
       id: 6,
@@ -47,7 +52,8 @@ const musicData = {
       artist: "Lil Nas X",
       cover: "https://i.scdn.co/image/ab67616d0000b273c90f18c41baca51f1b78529c",
       banner: "https://source.unsplash.com/random/800x300/?lilnasx",
-      plays: "2.3M"
+      plays: "2.3M",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
     }
   ],
   recent: [
@@ -57,7 +63,8 @@ const musicData = {
       artist: "Justin Bieber",
       cover: "https://i.scdn.co/image/ab67616d00001e02e6f407c7f3a0ec98845e4431",
       banner: "https://source.unsplash.com/random/800x300/?peaches",
-      time: "2 days ago"
+      time: "2 days ago",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
     },
     {
       id: 8,
@@ -65,7 +72,8 @@ const musicData = {
       artist: "Doja Cat ft. SZA",
       cover: "https://i.scdn.co/image/ab67616d00001e02b1c4b76e23414c9f20242268",
       banner: "https://source.unsplash.com/random/800x300/?dojacat",
-      time: "1 week ago"
+      time: "1 week ago",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
     },
     {
       id: 9,
@@ -73,7 +81,8 @@ const musicData = {
       artist: "BTS",
       cover: "https://m.media-amazon.com/images/I/61CNdrgaz8L.jpg",
       banner: "https://source.unsplash.com/random/800x300/?bts",
-      time: "3 days ago"
+      time: "3 days ago",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3"
     },
     {
       id: 10,
@@ -81,7 +90,8 @@ const musicData = {
       artist: "Dua Lipa",
       cover: "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
       banner: "https://source.unsplash.com/random/800x300/?dontstartnow",
-      time: "5 days ago"
+      time: "5 days ago",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
     },
     {
       id: 11,
@@ -89,7 +99,8 @@ const musicData = {
       artist: "BTS",
       cover: "https://m.media-amazon.com/images/M/MV5BZDJiZTExYjAtOWRjNi00OWEyLWI2OWQtMDg0YWRlYWUyNzVmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       banner: "https://source.unsplash.com/random/800x300/?dynamite",
-      time: "2 weeks ago"
+      time: "2 weeks ago",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3"
     },
     {
       id: 12,
@@ -97,7 +108,8 @@ const musicData = {
       artist: "Harry Styles",
       cover: "https://i.pinimg.com/736x/5f/9c/64/5f9c6420373b6c9438e09f4a54e678e9.jpg",
       banner: "https://source.unsplash.com/random/800x300/?watermelonsugar",
-      time: "4 days ago"
+      time: "4 days ago",
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3"
     }
   ]
 };
@@ -158,7 +170,8 @@ const contentData = {
           subtitle: song.artist,
           image: song.cover,
           banner: song.banner,
-          time: song.time
+          time: song.time,
+          audioUrl: song.audioUrl
         }))
       }
     ]
@@ -229,10 +242,10 @@ const contentData = {
         type: "list",
         title: "Most Played",
         items: [
-          { title: "Save Your Tears", subtitle: "The Weeknd", image: "https://i.ytimg.com/vi/3o4ug07qJBI/maxresdefault.jpg", time: "3:35" },
-          { title: "Levitating", subtitle: "Dua Lipa", image: "https://i1.sndcdn.com/artworks-orxd3Qu4MvUnj9Wp-zpTayQ-t500x500.jpg", time: "3:23" },
-          { title: "Stay", subtitle: "The Kid LAROI, Justin Bieber", image: "https://i.ytimg.com/vi/kTJczUoc26U/maxresdefault.jpg", time: "2:21" },
-          { title: "Good 4 U", subtitle: "Olivia Rodrigo", image: "https://i.pinimg.com/736x/11/71/c4/1171c485714ea6110855c32c3001cc2b.jpg", time: "2:58" }
+          { title: "Save Your Tears", subtitle: "The Weeknd", image: "https://i.ytimg.com/vi/3o4ug07qJBI/maxresdefault.jpg", time: "3:35", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3" },
+          { title: "Levitating", subtitle: "Dua Lipa", image: "https://i1.sndcdn.com/artworks-orxd3Qu4MvUnj9Wp-zpTayQ-t500x500.jpg", time: "3:23", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" },
+          { title: "Stay", subtitle: "The Kid LAROI, Justin Bieber", image: "https://i.ytimg.com/vi/kTJczUoc26U/maxresdefault.jpg", time: "2:21", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" },
+          { title: "Good 4 U", subtitle: "Olivia Rodrigo", image: "https://i.pinimg.com/736x/11/71/c4/1171c485714ea6110855c32c3001cc2b.jpg", time: "2:58", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" }
         ]
       }
     ]
@@ -253,7 +266,8 @@ const contentData = {
           title: song.title,
           subtitle: song.artist,
           image: song.cover,
-          time: song.time
+          time: song.time,
+          audioUrl: song.audioUrl
         }))
       }
     ]
@@ -295,10 +309,10 @@ const playlistData = {
         type: "list",
         title: "Tracklist",
         items: [
-          { title: "Stronger", subtitle: "Kanye West", image: "https://i.ytimg.com/vi/aBp70SIv-no/maxresdefault.jpg", time: "4:06" },
-          { title: "Till I Collapse", subtitle: "Eminem", image: "https://i1.sndcdn.com/artworks-s3WEIHzICABO082S-wVmy1w-t500x500.jpg", time: "4:57" },
-          { title: "Can't Hold Us", subtitle: "Macklemore & Ryan Lewis", image: "https://i.ytimg.com/vi/dbevJM-2lcY/maxresdefault.jpg", time: "4:18" },
-          { title: "Power", subtitle: "Kanye West", image: "https://i.ytimg.com/vi/iIR8rlPD0aQ/maxresdefault.jpg", time: "4:52" }
+          { title: "Stronger", subtitle: "Kanye West", image: "https://i.ytimg.com/vi/aBp70SIv-no/maxresdefault.jpg", time: "4:06", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" },
+          { title: "Till I Collapse", subtitle: "Eminem", image: "https://i1.sndcdn.com/artworks-s3WEIHzICABO082S-wVmy1w-t500x500.jpg", time: "4:57", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-18.mp3" },
+          { title: "Can't Hold Us", subtitle: "Macklemore & Ryan Lewis", image: "https://i.ytimg.com/vi/dbevJM-2lcY/maxresdefault.jpg", time: "4:18", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-19.mp3" },
+          { title: "Power", subtitle: "Kanye West", image: "https://i.ytimg.com/vi/iIR8rlPD0aQ/maxresdefault.jpg", time: "4:52", audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-20.mp3" }
         ]
       }
     ]
@@ -321,6 +335,11 @@ const timeCurrent = document.querySelector('.time-current');
 const timeTotal = document.querySelector('.time-total');
 const languageButton = document.getElementById('languageButton');
 const languageDropdown = document.getElementById('languageDropdown');
+const audioPlayer = document.getElementById('audio-player');
+
+// Audio player state
+let currentSong = null;
+let isPlaying = false;
 
 // Modal Functions
 function openModal() {
@@ -372,58 +391,95 @@ languageOptions.forEach(option => {
 
 // Play Song Function
 function playSong(song) {
+  // If same song is clicked, toggle play/pause
+  if (currentSong && currentSong.id === song.id) {
+    togglePlayPause();
+    return;
+  }
+  
+
+  // Update current song
+  currentSong = song;
+  
+  // Update player UI
   songTitle.textContent = song.title;
   songArtist.textContent = song.artist;
   songCover.src = song.cover || "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228";
   
-  // Update player state
-  playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-  timeCurrent.textContent = '0:00';
-  timeTotal.textContent = '3:45'; // This would be dynamic in a real app
+  // Set audio source
+  audioPlayer.src = song.audioUrl;
   
-  // Simulate progress bar movement
-  let progress = 0;
-  const interval = setInterval(() => {
-    if (progress >= 100) {
-      clearInterval(interval);
-      playBtn.innerHTML = '<i class="fas fa-play"></i>';
-    } else {
-      progress += 0.5;
-      progressFill.style.width = `${progress}%`;
-      const minutes = Math.floor((progress / 100) * 3);
-      const seconds = Math.floor(((progress / 100) * 3 * 60) % 60);
-      timeCurrent.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-    }
-  }, 1000);
-  
-  // Store the interval so we can clear it when needed
-  playBtn._progressInterval = interval;
+  // Play the audio
+  audioPlayer.play()
+    .then(() => {
+      isPlaying = true;
+      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    })
+    .catch(error => {
+      console.error("Error playing audio:", error);
+    });
 }
 
 // Toggle Play/Pause
-playBtn.addEventListener('click', () => {
-  const icon = playBtn.querySelector('i');
-  if (icon.classList.contains('fa-play')) {
-    icon.classList.replace('fa-play', 'fa-pause');
-    // Start progress simulation
-    let progress = parseFloat(progressFill.style.width) || 0;
-    playBtn._progressInterval = setInterval(() => {
-      if (progress >= 100) {
-        clearInterval(playBtn._progressInterval);
-        icon.classList.replace('fa-pause', 'fa-play');
-      } else {
-        progress += 0.5;
-        progressFill.style.width = `${progress}%`;
-        const minutes = Math.floor((progress / 100) * 3);
-        const seconds = Math.floor(((progress / 100) * 3 * 60) % 60);
-        timeCurrent.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-      }
-    }, 1000);
+function togglePlayPause() {
+  if (!currentSong) return;
+
+  if (isPlaying) {
+    audioPlayer.pause();
+    playBtn.innerHTML = '<i class="fas fa-play"></i>';
   } else {
-    icon.classList.replace('fa-pause', 'fa-play');
-    // Pause progress simulation
-    clearInterval(playBtn._progressInterval);
+    audioPlayer.play()
+      .then(() => {
+        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      })
+      .catch(error => {
+        console.error("Error playing audio:", error);
+      });
   }
+  isPlaying = !isPlaying;
+}
+
+// Update progress bar
+audioPlayer.addEventListener('timeupdate', () => {
+  if (!isNaN(audioPlayer.duration)) {
+    const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    progressFill.style.width = `${progress}%`;
+
+    // Update time display
+    const currentMinutes = Math.floor(audioPlayer.currentTime / 60);
+    const currentSeconds = Math.floor(audioPlayer.currentTime % 60);
+    timeCurrent.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
+
+    const durationMinutes = Math.floor(audioPlayer.duration / 60);
+    const durationSeconds = Math.floor(audioPlayer.duration % 60);
+    timeTotal.textContent = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
+  }
+});
+
+// Handle song end
+audioPlayer.addEventListener('ended', () => {
+  isPlaying = false;
+  playBtn.innerHTML = '<i class="fas fa-play"></i>';
+});
+
+// Play button click handler
+playBtn.addEventListener('click', togglePlayPause);
+
+// Progress bar click handler
+progressBar.addEventListener('click', (e) => {
+  if (!currentSong) return;
+
+  const rect = progressBar.getBoundingClientRect();
+  const pos = (e.clientX - rect.left) / rect.width;
+  const seekTime = pos * audioPlayer.duration;
+  
+  audioPlayer.currentTime = seekTime;
+  progressFill.style.width = `${pos * 100}%`;
+});
+
+// Volume control
+volumeSlider.addEventListener('input', (e) => {
+  audioPlayer.volume = e.target.value / 100;
 });
 
 // Toggle Like
@@ -435,22 +491,6 @@ likeBtn.addEventListener('click', () => {
   } else {
     icon.classList.replace('fas', 'far');
   }
-});
-
-// Progress Bar Click
-progressBar.addEventListener('click', (e) => {
-  const rect = progressBar.getBoundingClientRect();
-  const pos = (e.clientX - rect.left) / rect.width;
-  progressFill.style.width = `${pos * 100}%`;
-  const minutes = Math.floor(pos * 3);
-  const seconds = Math.floor((pos * 3 * 60) % 60);
-  timeCurrent.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-});
-
-// Volume Control
-volumeSlider.addEventListener('input', (e) => {
-  // In a real app, this would control audio volume
-  console.log(`Volume set to ${e.target.value}%`);
 });
 
 // Load content for sidebar navigation
@@ -521,7 +561,7 @@ function loadContent(section) {
           </div>
           <div class="featured-grid">
             ${section.items.map(item => `
-              <div class="featured-card" style="${item.gradient ? `background-image: ${item.gradient}` : `background-color: var(--dark-tertiary)`}" onclick="playSong(${JSON.stringify(item).replace(/"/g, '&quot;')})">
+              <div class="featured-card" style="${item.gradient ? `background-image: ${item.gradient}` : `background-color: var(--dark-tertiary)`}" onclick="playSection('${item.title}')">
                 <div class="card-content">
                 <img src="${item.image}" alt="${item.title}">
                   <h3>${item.title}</h3>
@@ -720,9 +760,10 @@ document.addEventListener('DOMContentLoaded', () => {
   loadContent('home');
   
   // Set initial player state
-  playSong({
-    title: "Blinding Lights",
-    artist: "The Weeknd",
-    cover: "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
-  });
+  songTitle.textContent = "Blinding Lights";
+  songArtist.textContent = "The Weeknd";
+  songCover.src = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228";
+  
+  // Set initial volume
+  audioPlayer.volume = volumeSlider.value / 100;
 });

@@ -725,7 +725,9 @@ body {
 }
 
 /* Music Player */
+/* Add this to your style.css */
 .music-player {
+  display: none; /* Hide by default */
   position: fixed;
   bottom: 0;
   left: 0;
@@ -739,6 +741,9 @@ body {
   z-index: 100;
 }
 
+.music-player.visible {
+  display: flex; /* Show when this class is added */
+}
 .song-info {
   display: flex;
   align-items: center;
@@ -975,4 +980,74 @@ body {
   .featured-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
+}
+
+/* Add this to your existing style.css */
+
+/* Music player active state */
+.play-btn.playing {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Progress bar interaction */
+.progress-bar:hover .progress-fill {
+  background-color: var(--primary-light);
+}
+
+.progress-bar {
+  cursor: pointer;
+  transition: height 0.2s ease;
+}
+
+.progress-bar:hover {
+  height: 6px;
+}
+
+/* Volume slider */
+.volume-slider input {
+  width: 100px;
+  height: 4px;
+  -webkit-appearance: none;
+  background-color: var(--light-tertiary);
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.volume-slider input:hover {
+  height: 6px;
+}
+
+.volume-slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Like button animation */
+.like-btn.liked {
+  color: var(--primary-color);
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Featured card hover effect */
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Recent item hover effect */
+.recent-item:hover {
+  background-color: var(--light-tertiary);
+  transform: translateX(5px);
 }
