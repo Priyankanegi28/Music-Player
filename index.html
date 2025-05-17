@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harmony | Online Music Player</title>
+  <title>Melo | Online Music Player</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +12,7 @@
   <nav class="navbar">
     <div class="logo">
       <i class="fas fa-music"></i>
-      <span>Harmony</span>
+      <span>Melo</span>
     </div>
     <div class="search-bar">
       <i class="fas fa-search search-icon"></i>
@@ -25,7 +25,7 @@
           <span>Languages</span>
           <i class="fas fa-chevron-down"></i>
         </button>
-        <div class="dropdown-content">
+        <div class="dropdown-content" id="languageDropdown">
           <div class="dropdown-header">
             <h3>Music Languages</h3>
             <p>Select your preferred languages</p>
@@ -96,7 +96,7 @@
       <span class="close" onclick="closeModal()">&times;</span>
       <div class="modal-header">
         <h2>Welcome Back</h2>
-        <p>Login to your Harmony account</p>
+        <p>Login to your Melo account</p>
       </div>
       <form class="login-form">
         <div class="form-group">
@@ -178,75 +178,13 @@
             <i class="fas fa-list-music"></i>
             <span>Workout Mix</span>
           </button>
-          <button class="playlist-item" onclick="loadPlaylist('chill')">
-            <i class="fas fa-list-music"></i>
-            <span>Chill Vibes</span>
-          </button>
-          <button class="playlist-item" onclick="loadPlaylist('roadtrip')">
-            <i class="fas fa-list-music"></i>
-            <span>Road Trip</span>
-          </button>
         </div>
       </div>
     </aside>
 
     <!-- Main Content Area -->
     <main class="content-area" id="content-area">
-      <!-- Featured Section -->
-      <section class="featured-section">
-        <div class="section-header">
-          <h2>Good Afternoon</h2>
-          <button class="see-all">See all</button>
-        </div>
-        <div class="featured-grid">
-          <div class="featured-card" style="background-image: linear-gradient(to right, #ff758c, #ff7eb3);">
-            <div class="card-content">
-              <h3>Today's Top Hits</h3>
-              <p>Current chart toppers worldwide</p>
-            </div>
-          </div>
-          <div class="featured-card" style="background-image: linear-gradient(to right, #7f7fd5, #86a8e7);">
-            <div class="card-content">
-              <h3>Chill Lounge</h3>
-              <p>Relaxing beats for your day</p>
-            </div>
-          </div>
-          <div class="featured-card" style="background-image: linear-gradient(to right, #a8e063, #56ab2f);">
-            <div class="card-content">
-              <h3>Workout Energy</h3>
-              <p>Pump up your exercise routine</p>
-            </div>
-          </div>
-          <div class="featured-card" style="background-image: linear-gradient(to right, #f46b45, #eea849);">
-            <div class="card-content">
-              <h3>Indie Mix</h3>
-              <p>Fresh independent artists</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Trending Now Section -->
-      <section class="trending-section">
-        <div class="section-header">
-          <h2>Trending Now</h2>
-          <button class="see-all">See all</button>
-        </div>
-        <div class="trending-grid" id="trending-grid">
-          <!-- Cards will be populated by JavaScript -->
-        </div>
-      </section>
-
-      <!-- Recently Played Section -->
-      <section class="recent-section">
-        <div class="section-header">
-          <h2>Recently Played</h2>
-          <button class="see-all">See all</button>
-        </div>
-        <div class="recent-grid" id="recent-grid">
-          <!-- Cards will be populated by JavaScript -->
-        </div>
-      </section>
+      <!-- Content will be loaded dynamically -->
     </main>
   </div>
 
