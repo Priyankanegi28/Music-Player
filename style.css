@@ -9,6 +9,8 @@
   --light-secondary: #b3b3b3;
   --light-tertiary: #535353;
   --dark-text: #121212;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
 * {
@@ -18,12 +20,31 @@
 }
 
 body {
-  font-family: 'Circular', Arial, sans-serif;
+  font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: var(--dark-bg);
   color: var(--light-text);
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--light-secondary);
 }
 
 /* Navbar Styles */
@@ -36,14 +57,21 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: var(--shadow);
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 25px;
+  font-size: 24px;
   font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  transform: scale(1.02);
 }
 
 .logo i {
@@ -53,6 +81,7 @@ body {
 .search-bar {
   position: relative;
   flex: 0.6;
+  max-width: 500px;
 }
 
 .search-bar input {
@@ -63,6 +92,12 @@ body {
   background-color: var(--dark-tertiary);
   color: var(--light-text);
   font-size: 14px;
+  transition: var(--transition);
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .search-icon {
@@ -76,10 +111,11 @@ body {
 .navbar-buttons {
   display: flex;
   gap: 15px;
+  align-items: center;
 }
 
 .dropbtn {
-  background-color: transparent;
+  background-color: var(--dark-tertiary);
   border: none;
   color: var(--light-text);
   padding: 8px 16px;
@@ -89,7 +125,7 @@ body {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .dropbtn:hover {
@@ -116,6 +152,12 @@ body {
 
 .dropdown-content.show {
   display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .dropdown-header {
@@ -146,7 +188,7 @@ body {
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .language-option:hover {
@@ -166,11 +208,12 @@ body {
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .update-btn:hover {
   background-color: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 .login-btn {
@@ -184,11 +227,12 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .login-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Modal Styles */
@@ -203,6 +247,7 @@ body {
   background-color: rgba(0,0,0,0.7);
   justify-content: center;
   align-items: center;
+  animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
@@ -212,6 +257,13 @@ body {
   width: 400px;
   max-width: 90%;
   position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.queue-modal {
+  width: 500px;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .close {
@@ -221,10 +273,12 @@ body {
   font-size: 24px;
   cursor: pointer;
   color: var(--light-secondary);
+  transition: var(--transition);
 }
 
 .close:hover {
   color: var(--light-text);
+  transform: rotate(90deg);
 }
 
 .modal-header {
@@ -256,6 +310,7 @@ body {
 .form-group label {
   font-size: 14px;
   color: var(--light-text);
+  font-weight: 600;
 }
 
 .form-group input {
@@ -265,6 +320,12 @@ body {
   background-color: var(--dark-tertiary);
   color: var(--light-text);
   font-size: 14px;
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 .form-options {
@@ -287,6 +348,7 @@ body {
   font-size: 14px;
   color: var(--primary-color);
   text-decoration: none;
+  transition: var(--transition);
 }
 
 .forgot-password:hover {
@@ -301,12 +363,13 @@ body {
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   margin-top: 8px;
 }
 
 .login-submit:hover {
   background-color: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 .signup-link {
@@ -319,6 +382,7 @@ body {
 .signup-link a {
   color: var(--primary-color);
   text-decoration: none;
+  transition: var(--transition);
 }
 
 .signup-link a:hover {
@@ -369,12 +433,30 @@ body {
   background-color: transparent;
   color: var(--light-text);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-btn:hover {
   background-color: var(--light-tertiary);
   transform: scale(1.1);
+}
+
+.social-btn.google:hover {
+  background-color: #DB4437;
+  border-color: #DB4437;
+}
+
+.social-btn.facebook:hover {
+  background-color: #4267B2;
+  border-color: #4267B2;
+}
+
+.social-btn.apple:hover {
+  background-color: #000;
+  border-color: #000;
 }
 
 /* Main Container */
@@ -392,6 +474,7 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  transition: width 0.3s ease;
 }
 
 .sidebar-menu {
@@ -413,7 +496,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   text-align: left;
 }
 
@@ -435,6 +518,7 @@ body {
 
 .playlists-section {
   margin-top: 16px;
+  flex: 1;
 }
 
 .section-header {
@@ -457,7 +541,7 @@ body {
   color: var(--light-secondary);
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .add-playlist:hover {
@@ -469,6 +553,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow-y: auto;
+  max-height: 300px;
 }
 
 .playlist-item {
@@ -482,7 +568,7 @@ body {
   color: var(--light-secondary);
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -516,6 +602,7 @@ body {
 .page-title {
   font-size: 32px;
   margin-bottom: 24px;
+  font-weight: 700;
 }
 
 .content-section {
@@ -525,6 +612,9 @@ body {
 .content-section h2 {
   font-size: 24px;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .see-all {
@@ -533,7 +623,7 @@ body {
   color: var(--light-secondary);
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .see-all:hover {
@@ -549,6 +639,13 @@ body {
   display: flex;
   align-items: center;
   gap: 30px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.hero-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-text {
@@ -582,7 +679,7 @@ body {
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .hero-button:hover {
@@ -602,17 +699,20 @@ body {
   background-color: var(--dark-tertiary);
   border-radius: 8px;
   padding: 16px;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   cursor: pointer;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
+  overflow: hidden;
 }
 
 .featured-card:hover {
   background-color: #333;
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .featured-card img {
@@ -621,6 +721,11 @@ body {
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 12px;
+  transition: var(--transition);
+}
+
+.featured-card:hover img {
+  transform: scale(1.03);
 }
 
 .featured-card h3 {
@@ -641,6 +746,27 @@ body {
   text-overflow: ellipsis;
 }
 
+.featured-card .play-icon {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  background-color: var(--primary-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.featured-card:hover .play-icon {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
 /* Banner Styles */
 .song-banner {
   width: 100%;
@@ -649,12 +775,18 @@ body {
   margin-bottom: 20px;
   overflow: hidden;
   position: relative;
+  box-shadow: var(--shadow);
 }
 
 .song-banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: var(--transition);
+}
+
+.song-banner:hover img {
+  transform: scale(1.03);
 }
 
 .song-banner-content {
@@ -682,6 +814,7 @@ body {
   background-color: var(--dark-tertiary);
   padding: 10px;
   border-radius: 8px;
+  box-shadow: var(--shadow);
 }
 
 .recent-item {
@@ -690,12 +823,13 @@ body {
   gap: 15px;
   padding: 10px;
   border-radius: 6px;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
   cursor: pointer;
 }
 
 .recent-item:hover {
   background-color: var(--light-tertiary);
+  transform: translateX(5px);
 }
 
 .recent-item img {
@@ -724,10 +858,69 @@ body {
   color: var(--light-secondary);
 }
 
+.recent-item .play-icon {
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.recent-item:hover .play-icon {
+  opacity: 1;
+}
+
+/* Queue List Styles */
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.queue-item:hover {
+  background-color: var(--light-tertiary);
+}
+
+.queue-item.active {
+  background-color: var(--light-tertiary);
+  color: var(--primary-color);
+}
+
+.queue-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.queue-item-info {
+  flex: 1;
+}
+
+.queue-item-title {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.queue-item-artist {
+  font-size: 12px;
+  color: var(--light-secondary);
+}
+
+.queue-item-time {
+  font-size: 12px;
+  color: var(--light-secondary);
+}
+
 /* Music Player */
-/* Add this to your style.css */
 .music-player {
-  display: none; /* Hide by default */
   position: fixed;
   bottom: 0;
   left: 0;
@@ -739,16 +932,16 @@ body {
   justify-content: space-between;
   padding: 0 20px;
   z-index: 100;
+  border-top: 1px solid var(--light-tertiary);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.music-player.visible {
-  display: flex; /* Show when this class is added */
-}
 .song-info {
   display: flex;
   align-items: center;
   gap: 15px;
   flex: 0.3;
+  min-width: 200px;
 }
 
 .song-cover {
@@ -756,16 +949,27 @@ body {
   height: 56px;
   border-radius: 4px;
   object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.song-details {
+  min-width: 0;
 }
 
 .song-details h4 {
   font-size: 14px;
   margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .song-details p {
   font-size: 12px;
   color: var(--light-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .like-btn {
@@ -775,6 +979,12 @@ body {
   font-size: 16px;
   cursor: pointer;
   margin-left: 15px;
+  transition: var(--transition);
+}
+
+.like-btn:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
 }
 
 .like-btn.liked {
@@ -805,11 +1015,15 @@ body {
   color: var(--light-secondary);
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .control-btn:hover {
   color: var(--light-text);
+}
+
+.control-btn.active {
+  color: var(--primary-color);
 }
 
 .play-btn {
@@ -823,11 +1037,16 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .play-btn:hover {
   transform: scale(1.05);
+}
+
+.play-btn.playing {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .progress-container {
@@ -843,6 +1062,11 @@ body {
   background-color: var(--light-tertiary);
   border-radius: 2px;
   cursor: pointer;
+  transition: height 0.2s ease;
+}
+
+.progress-bar:hover {
+  height: 6px;
 }
 
 .progress-fill {
@@ -850,12 +1074,19 @@ body {
   background-color: var(--light-text);
   border-radius: 2px;
   width: 0%;
+  transition: width 0.1s linear;
+}
+
+.progress-bar:hover .progress-fill {
+  background-color: var(--primary-light);
 }
 
 .time-current,
 .time-total {
   font-size: 12px;
   color: var(--light-secondary);
+  min-width: 40px;
+  text-align: center;
 }
 
 .player-options {
@@ -872,20 +1103,56 @@ body {
   color: var(--light-secondary);
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .option-btn:hover {
   color: var(--light-text);
 }
 
+.option-btn.active {
+  color: var(--primary-color);
+}
+
 .volume-slider {
   width: 100px;
+  display: flex;
+  align-items: center;
 }
 
 .volume-slider input {
   width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  background-color: var(--light-tertiary);
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.2s ease;
   cursor: pointer;
+}
+
+.volume-slider input:hover {
+  height: 6px;
+}
+
+.volume-slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.like-btn.liked {
+  animation: pulse 0.5s ease;
 }
 
 /* Responsive Styles */
@@ -951,7 +1218,7 @@ body {
     flex: 0.5;
   }
   
-  .player-options {
+  .player-options .option-btn:not(#volume-btn) {
     display: none;
   }
 }
@@ -980,74 +1247,16 @@ body {
   .featured-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
-}
-
-/* Add this to your existing style.css */
-
-/* Music player active state */
-.play-btn.playing {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-/* Progress bar interaction */
-.progress-bar:hover .progress-fill {
-  background-color: var(--primary-light);
-}
-
-.progress-bar {
-  cursor: pointer;
-  transition: height 0.2s ease;
-}
-
-.progress-bar:hover {
-  height: 6px;
-}
-
-/* Volume slider */
-.volume-slider input {
-  width: 100px;
-  height: 4px;
-  -webkit-appearance: none;
-  background-color: var(--light-tertiary);
-  border-radius: 2px;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.volume-slider input:hover {
-  height: 6px;
-}
-
-.volume-slider input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  background-color: white;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Like button animation */
-.like-btn.liked {
-  color: var(--primary-color);
-  animation: pulse 0.5s ease;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-/* Featured card hover effect */
-.featured-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Recent item hover effect */
-.recent-item:hover {
-  background-color: var(--light-tertiary);
-  transform: translateX(5px);
+  
+  .player-controls {
+    flex: 1;
+  }
+  
+  .song-info {
+    display: none;
+  }
+  
+  .player-options {
+    display: none;
+  }
 }

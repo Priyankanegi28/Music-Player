@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Melo | Online Music Player </title>
-  <link rel="icon"  href="https://t3.ftcdn.net/jpg/05/85/10/62/360_F_585106274_GbJNWuJ9gnj93G19sRT4eK54ojKysO0t.jpg">
+  <title>Melo | Online Music Player</title>
+  <link rel="icon" href="https://t3.ftcdn.net/jpg/05/85/10/62/360_F_585106274_GbJNWuJ9gnj93G19sRT4eK54ojKysO0t.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<audio id="audio-player" style="display: none;"></audio>
 <body>
+  <audio id="audio-player"></audio>
+  
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
@@ -180,6 +181,7 @@
             <i class="fas fa-list-music"></i>
             <span>Workout Mix</span>
           </button>
+          
         </div>
       </div>
     </aside>
@@ -204,43 +206,57 @@
     </div>
     <div class="player-controls">
       <div class="control-buttons">
-        <button class="control-btn">
+        <button class="control-btn" id="shuffle-btn">
           <i class="fas fa-random"></i>
         </button>
-        <button class="control-btn">
+        <button class="control-btn" id="prev-btn">
           <i class="fas fa-step-backward"></i>
         </button>
-        <button class="play-btn">
-          <i class="fas fa-pause"></i>
+        <button class="play-btn" id="play-btn">
+          <i class="fas fa-play"></i>
         </button>
-        <button class="control-btn">
+        <button class="control-btn" id="next-btn">
           <i class="fas fa-step-forward"></i>
         </button>
-        <button class="control-btn">
+        <button class="control-btn" id="repeat-btn">
           <i class="fas fa-redo"></i>
         </button>
       </div>
       <div class="progress-container">
-        <span class="time-current">1:28</span>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 45%;"></div>
+        <span class="time-current" id="current-time">0:00</span>
+        <div class="progress-bar" id="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
         </div>
-        <span class="time-total">3:46</span>
+        <span class="time-total" id="total-time">0:00</span>
       </div>
     </div>
     <div class="player-options">
-      <button class="option-btn">
+      <button class="option-btn" id="queue-btn">
         <i class="fas fa-list-ol"></i>
       </button>
-      <button class="option-btn">
+      <button class="option-btn" id="volume-btn">
         <i class="fas fa-volume-up"></i>
       </button>
-      <div class="volume-slider">
-        <input type="range" min="0" max="100" value="80">
+      <div class="volume-slider" id="volume-container">
+        <input type="range" min="0" max="100" value="80" id="volume-slider">
       </div>
-      <button class="option-btn">
+      <button class="option-btn" id="fullscreen-btn">
         <i class="fas fa-expand"></i>
       </button>
+    </div>
+  </div>
+
+  <!-- Queue Modal -->
+  <div id="queueModal" class="modal">
+    <div class="modal-content queue-modal">
+      <span class="close" onclick="closeQueueModal()">&times;</span>
+      <div class="modal-header">
+        <h2>Queue</h2>
+        <p>Your current playlist</p>
+      </div>
+      <div class="queue-list" id="queue-list">
+        <!-- Queue items will be added here dynamically -->
+      </div>
     </div>
   </div>
 
