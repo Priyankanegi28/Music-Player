@@ -40,9 +40,8 @@ Melo is a modern, responsive web-based music player with a sleek UI inspired by 
 melo-music-player/
 ├── index.html          # Main application file
 ├── style.css           # All styling for the app
-├── script.js           # All JavaScript functionality
-|__ sidebar.html         
-└── assets/             # (Optional) Folder for images/icons
+├── script.js           # All JavaScript functionality         
+└── music.png            # (Optional) image/icon
 ```
 
 ## How to Use 🎶
